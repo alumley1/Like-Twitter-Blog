@@ -1,0 +1,22 @@
+<% if user_signed_in? %>
+  <%= render "tweets/javascripts/tweet.js.erb" %>
+   <div id="feed">
+    <%= render 'tweets/form' %>
+    <div style="clear:both;"></div>
+    <div class="stream">
+      <p>0 new tweets</p>
+    </div>
+    <div id="tweets">
+      <%= render "tweets/feed", :feed => @tweets %>
+    </div>
+  </div>
+  <div id="dashboard">
+    <div class="component">
+      <h3>Your Tweets <span class="tweet-count"><%= @user.tweets.count %></span></h3>
+      <span class="tweet-last"><%= render "tweets/tweecut", :tweet => @user.tweets.last %></span>
+    </div>
+    <div class="component">
+      <%= render 'users/components/friends', :@user => @user %>
+    </div>
+  </div>
+<% end %>

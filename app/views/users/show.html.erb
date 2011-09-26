@@ -1,0 +1,36 @@
+<%= render "tweets/javascripts/tweet.js.erb" %>
+<div id="feed">
+  <div id="profile-container">
+    <div class="profile-header">
+      <div class="profile-image">
+        <%= image_tag(@user.avatar.url(:big)) %>
+      </div>
+      <div class="profile-details">
+        <div class="full-name">
+          <h1><%= @user.name %></h1>
+        </div>
+        <div class="profile-tweets">
+          <% if @user.tweets.exists? %>
+            <div class="component">
+              <h3>User Tweets <span class="tweet-count"><%= @user.tweets.count %></span></h3>
+              <%= render "tweets/tweecut", :tweet => @user.tweets.last %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="clear:both;"></div>
+  <div class="stream">
+    <p>0 new tweets</p>
+  </div>
+  <div id="tweets">
+    <%= render "tweets/feed", :feed => @tweets %>
+  </div>
+</div>
+ <div id="dashboard">
+   <div class="component">
+     <%= render 'users/components/friends', :@user => @user %>
+     <%= follow_button(current_user, @user) %>
+   </div>
+ </div>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Twitter</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<div id="header">
+  <div class="content">
+    <ul class="menu"%>
+      <%= render 'devise/menu/header' %>
+    </ul>
+    <div class="logo"><%= link_to "twitter", root_path %></div>
+  </div>
+</div>
+<body>
+<div id="wrapper">
+  <%= content_tag(:p, notice, :class => "notice") unless notice.blank? %>
+  <%= content_tag(:p, notice, :class => "alert") unless alert.blank? %>
+    <%= alert %>
+    <% if flash[:global_error] %>
+      <% flash[:global_error].each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    <% end %>
+  </p>
+  <div id="main">
+     <%= yield %>
+  </div>
+ </div>
+</body>
+</html>

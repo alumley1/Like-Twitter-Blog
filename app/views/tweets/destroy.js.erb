@@ -1,0 +1,6 @@
+$("#tweet-<%= @tweet.id %>").fadeOut("Slow", function(){
+  $(this).remove();
+});
+$(".tweet-last").html("<%=j render "tweecut", :tweet => @user.tweets.last %>");
+$('.tweet-count').text(parseInt($('.tweet-count').text()) - 1);
+check_tweets_in_feed();

@@ -1,0 +1,16 @@
+<%= render "tweets/javascripts/form.js.erb" %>
+<%= form_for([current_user, @tweet], :remote => true) do |f| %>
+  <% if flash[:error] %>
+    <%= render "shared/error_messages", :errors => flash[:error] %>
+  <% end %>
+
+  <div class="field">
+    <h3><%= f.label :content, "Whats happening?" %></h3>
+    <%= f.text_area :content %>
+  </div>
+
+  <div class="actions container">
+    <span class="characters"><%= maximum_content_length %></span>
+    <%= f.submit "Tweet"%>
+  </div>
+<% end %>

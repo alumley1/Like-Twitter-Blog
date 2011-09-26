@@ -1,0 +1,79 @@
+// Place all the styles related to the friendships controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.btn-follow {
+  padding: 5px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  border: 1px solid grey;
+}
+
+.btn-unfollow {
+  padding: 5px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  border: 1px solid grey;
+}
+
+#main {
+  #feed {
+    .user {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #E6E6E6;
+      &:hover {
+        background: rgba(204, 51, 102, 0.10);
+        border-bottom: 1px solid rgba(204, 51, 102, 0.30);
+      }
+      .image {
+        margin-left: 15px;
+        margin-right: 10px;
+        float: left;
+      }
+      .content {
+        margin-left: 73px;
+        min-height: 48px;
+        position: relative;
+        b {
+          a {
+            color: #333;
+            text-decoration: none;
+            background: none;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+        .btn-follow {
+          top:0;
+          right: 0;
+          position: absolute;
+          background: white;
+          float:right;
+          margin-right: 20px;
+          &:hover {
+
+          }
+        }
+        .btn-unfollow {
+          top:0;
+          right: 0;
+          position: absolute;
+          background: white;
+          margin-right: 20px;
+          display: block;
+          width: 60px;
+          text-align: center;
+          &:hover {
+
+          }
+        }
+        .row {
+          display: block;
+          position: relative;
+        }
+      }
+    }
+  }
+}

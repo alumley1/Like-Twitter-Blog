@@ -1,0 +1,25 @@
+<div id="show">
+  <div id="tweet-<%= @tweet.id %>" class="tweet" data-tweet-id="<%= @tweet.id %>">
+    <span><%= link_to "Back to #{@tweet.user.name} profile", user_path(@tweet.user) %></span>
+    <div class="profile">
+      <div class="details">
+        <div class="image">
+         <%= image_tag(@tweet.user.avatar.url(:small)) %>
+        </div>
+        <div class="full-name">
+         <h3><%= link_to @tweet.user.name, user_path(@tweet.user) %></h3>
+        </div>
+      </div>
+    </div>
+    <div style="clear:both;"></div>
+    <div class="content">
+      <div class="row message"><%= @tweet.content %></div>
+      <div class="row">
+        <span class="timestamp"><%= time_ago_in_words @tweet.created_at %> ago</span>
+        <% if can? :destroy, @tweet%>
+          <%= link_to "Delete", user_tweet_path(@tweet.user, @tweet), :method => :delete, :remote => true, :class => "action" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

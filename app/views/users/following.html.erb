@@ -1,0 +1,15 @@
+<%= render "users/javascripts/user.js.erb" %>
+<div id="feed">
+  <div class="profile-title">
+    <span><%= link_to "Back to #{@user.name} profile", user_path(@user) %></span>
+    <h2>
+      <%= "#{you_are(@user)} follow #{@following.count} people" %>
+    </h2>
+  </div>
+  <div id="users">
+    <%= render :partial => "friendships/following", :collection => @following.limit(20) %>
+  </div>
+</div>
+<div id="dashboard">
+   <%= render "users/components/profile", :user => @user %>
+</div>

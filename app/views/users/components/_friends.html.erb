@@ -1,0 +1,17 @@
+<div class="activity">
+  <h3><%= link_to "#{@user.friends.count} Following", following_path(@user) %></h3>
+  <p>
+  <% @user.friends.order("friendships.created_at DESC").limit(4).each do |user| %>
+    <%= link_to image_tag(user.avatar.url(:small)), user_path(user) %>
+  <% end %>
+</p>
+</div>
+
+<div class="activity right">
+  <h3><%= link_to "Followers: #{@user.friended.count}", followers_path(@user) %></h3>
+<p>
+  <% @user.friended.order("friendships.created_at DESC").limit(4).each do |user| %>
+    <%= link_to image_tag(user.avatar.url(:small)), user_path(user) %>
+  <% end %>
+</p>
+</div>

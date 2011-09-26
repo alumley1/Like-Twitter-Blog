@@ -1,0 +1,16 @@
+<div id="tweet-<%= tweet.id %>" class="tweet" data-tweet-id="<%= tweet.id %>">
+  <div class="image">
+    <%= image_tag(tweet.user.avatar.url(:medium)) if tweet.user.avatar %>
+  </div>
+  <div class="content">
+    <div class="row"><b><%= link_to tweet.user.name, user_path(tweet.user) %></b></div>
+    <div class="row"><%= tweet.content %></div>
+    <div class="row">
+      <span class="timestamp"><%= time_ago_in_words tweet.created_at %> ago</span>
+      <%= link_to "Link", user_tweet_path(tweet.user, tweet), :class => "action"  %>
+      <% if can? :destroy, tweet%>
+        <%= link_to "Delete", user_tweet_path(tweet.user, tweet), :method => :delete, :remote => true, :class => "action" %>
+      <% end %>
+    </div>
+  </div>
+  </div>

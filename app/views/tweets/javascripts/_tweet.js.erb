@@ -1,0 +1,64 @@
+<script type="text/javascript">
+
+$(document).ready(function() {
+   $(".stream").click(function() {
+     hide_stream_button();
+     get_new_tweets_by_id($('.tweet:first').attr('data-tweet-id'));
+   });
+});
+
+var timeline = '<%= !(controller.action_name == "show") && (current_user == @user) ? true : false %>'
+
+var interval_check_tweets = function() {
+  $("#tweets").ready(function() {
+    if ($('.tweet').length > 0) {
+      check_new_tweets(
+        $('.tweet:first').attr('data-tweet-id'),
+        true,
+        function(data) {
+          show_stream_button(data.length);
+        },
+        function() {
+          $('.stream').css('display', 'none');
+        }
+      );
+    }
+  })
+};
+
+var check_new_tweets = function (tweet_max_id, mode, enter, exit) {
+ $.ajax({
+    async: mode,
+    dataType: "json",
+    url:'/tweets/get/<%= @user.id %>.json?update=true&timeline='+ timeline +'&max_id='+ tweet_max_id,
+    success: function(data) {
+      if (data.length > 0) {
+        enter(data);
+      }
+      else {
+        exit();
+      }
+    }
+  });
+};
+
+var get_new_tweets_by_id = function(tweet_max_id) {
+  $.get('/tweets/get/<%= @user.id %>?update=true&timeline='+ timeline +'&max_id='+ tweet_max_id, function(data){
+    $('#tweets').prepend(data);
+  });
+};
+
+var get_next_tweets_by_id = function(tweet_max_id, limit) {
+  $.get('/tweets/get/<%= @user.id %>?update=false&timeline='+ timeline +'&max_id='+ tweet_max_id +'&limit='+ limit +'', function(data){
+    $('#tweets').append(data);
+  }).complete(function() {
+    paginated = true;
+  });
+};
+
+scrollMethod("#tweets, .tweet", 10, function() {
+  get_next_tweets_by_id($('.tweet:last').attr('data-tweet-id'), 10);
+});
+
+window.setInterval('interval_check_tweets()', 60000);
+</script>

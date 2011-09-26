@@ -1,0 +1,11 @@
+<div class="user" data-friendship-id="<%= friendship.id %>">
+  <div class="image">
+    <%= image_tag(user.avatar.url(:medium)) %>
+  </div>
+  <div class="content">
+    <div class="row">
+      <b><%= link_to user.name, user_path(user) %></b>
+    </div>
+    <%= follow_button(current_user, user) %>
+  </div>
+</div>

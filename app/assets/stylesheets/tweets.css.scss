@@ -1,0 +1,67 @@
+// Place all the styles related to the Tweets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#main {
+  #feed {
+    .tweet {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #E6E6E6;
+      &:hover {
+        background: rgba(204, 51, 102, 0.10);
+        border-bottom: 1px solid rgba(204, 51, 102, 0.30);
+      }
+      .image {
+        margin-left: 15px;
+        margin-right: 10px;
+        float: left;
+      }
+      .content {
+        margin-left: 73px;
+        min-height: 48px;
+        b {
+          a {
+            color: #333;
+            text-decoration: none;
+            background: none;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+        .row {
+          display: block;
+          position: relative;
+          a {
+            background: none;
+          }
+        }
+      }
+      .timestamp {
+        font-size: .8em;
+        color: grey;
+      }
+      .action {
+        font-size: .8em;
+      }
+    }
+  }
+}
+
+.new_tweet {
+  margin-left: 15px;
+}
+
+#tweet_content {
+  width: 485px;
+  height: 78px;
+  max-width: 485px;
+}
+
+#new_tweet {
+  width: 493px;
+  .container {
+    float: right;
+    margin-bottom: 10px;
+  }
+}

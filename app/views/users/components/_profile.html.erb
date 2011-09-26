@@ -1,0 +1,17 @@
+<div class="component">
+ <div class="profile">
+   <div class="details">
+     <div class="image">
+       <%= image_tag(user.avatar.url(:medium)) %>
+     </div>
+     <div class="full-name">
+       <h3><%= user.name %></h3>
+     </div>
+   </div>
+ </div>
+</div>
+<div style="clear:both;"></div>
+<div class="component">
+ <%= render 'users/components/friends', :user => user %>
+ <%= follow_button(current_user, user) %>
+</div>

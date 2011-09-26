@@ -1,0 +1,15 @@
+<script type="text/javascript">
+feed = "<%= controller.action_name %>"
+
+var get_next_users_by_id = function(user_max_id, limit) {
+  $.get('/users/get/<%= @user.id %>?&feed='+feed+'&max_id='+ user_max_id +'&limit='+ limit +'', function(data){
+    $('#users').append(data);
+  }).complete(function() {
+    paginated = true;
+  });
+};
+
+scrollMethod("#users, .user", 20, function() {
+  get_next_users_by_id($('.user:last').attr('data-friendship-id'), 10);
+});
+</script>

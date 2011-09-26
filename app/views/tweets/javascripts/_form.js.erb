@@ -1,0 +1,19 @@
+<script type="text/javascript">
+var max_filled = false;
+    $('#tweet_content').live("keypress keyup keydown", function(event) {
+        $('.characters').html(<%= maximum_content_length %> - $('#tweet_content').val().length);
+        if ($(this).val().length > <%= maximum_content_length %>) {
+            max_filled = true;
+        } else {
+            max_filled = false;
+        };
+
+        if (max_filled == true) {
+          $('.characters').css('color', 'red');
+          $('input:[name="commit"]').attr('disabled', true);
+        } else {
+          $('.characters').css('color', 'black')
+          $('input:[name="commit"]').attr('disabled', false);
+        };
+    });
+</script>
