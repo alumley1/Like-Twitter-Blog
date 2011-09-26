@@ -1,7 +1,11 @@
 module FriendshipsHelper
 
   def follow_link(friend)
-    link_to "Follow", friendships_path(:friend_id => friend), :remote => true, :method => :post, :class => "btn-follow", "data-user-id" => friend
+    if user_signed_in?
+      link_to "Follow", friendships_path(:friend_id => friend), :remote => true, :method => :post, :class => "btn-follow", "data-user-id" => friend
+    else
+      link_to "Follow", friendships_path(:friend_id => friend), :remote => false, :method => :post, :class => "btn-follow", "data-user-id" => friend
+    end
   end
 
   def unfollow_link(friend)
