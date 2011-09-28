@@ -5,4 +5,4 @@ Simple example of Pagination with Ajax, and requesting new messages by JSON. Als
 
 ### Here's how it looks like
 
-<iframe src="http://player.vimeo.com/video/29607022?title=0&amp;byline=0&amp;portrait=0" width="400" height="335" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>
+Video link: http://vimeo.com/29607022
